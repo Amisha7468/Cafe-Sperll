@@ -1,0 +1,27 @@
+[
+  {
+    "id": "2ed3c7a3-85a4-4483-883b-ce44b5cf7f38",
+    "createdAt": "2025-11-14T14:57:42.398Z",
+    "customer": {
+      "name": "Amisha Bansal",
+      "phone": "09592052340",
+      "address": "#2153, sector 38- C"
+    },
+    "items": [
+      {
+        "id": 12,
+        "name": "Chocolate Pastry",
+        "price": 99,
+        "qty": 1
+      },
+      {
+        "id": 8,
+        "name": "Grilled Cheese Sandwich",
+        "price": 159,
+        "qty": 1
+      }
+    ],
+    "total": 258,
+    "status": "received"
+  }
+]

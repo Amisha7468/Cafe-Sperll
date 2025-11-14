@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cafe Sperl</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg px-4 sticky-top shadow-sm">
+    <a class="navbar-brand" href="#" id="brand">Cafe Sperl</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#menu-section">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item ms-3">
+          <button id="open-cart" class="btn cart-btn">🛒 Cart <span id="cart-count" class="badge bg-dark ms-1">0</span></button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO SLIDER (full-width, big) -->
+  <header id="hero" class="mb-4">
+    <div id="heroCarousel" class="carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80" class="d-block w-100 hero-img" alt="coffee ambience">
+          <div class="overlay"></div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1600&q=80" class="d-block w-100 hero-img" alt="brownie">
+          <div class="overlay"></div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1601924582975-7e6706d34a09?auto=format&fit=crop&w=1600&q=80" class="d-block w-100 hero-img" alt="pizza">
+          <div class="overlay"></div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1527169402691-a4b66e81a1d7?auto=format&fit=crop&w=1600&q=80" class="d-block w-100 hero-img" alt="iced-latte">
+          <div class="overlay"></div>
+        </div>
+      </div>
+
+      <div class="hero-content text-center">
+        <h1>Welcome to Cafe Sperl</h1>
+        <p class="lead">Where every sip brings comfort and every bite brings joy.</p>
+        <a href="#menu-section" class="btn hero-cta">Explore Menu</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MENU SECTION -->
+  <main>
+    <section id="menu-section" class="container py-5">
+      <h2 class="text-center menu-title">Our Menu</h2>
+      <div id="menuGrid" class="row g-4">
+        <!-- populated by main.js -->
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container pb-5">
+      <h2 class="text-center menu-title">Contact Us</h2>
+      <p class="text-center text-muted">Email: support@cafesperl.com • Phone: +91 98765 43210</p>
+    </section>
+  </main>
+
+  <footer class="text-center py-3">© <span id="year"></span> Cafe Sperl</footer>
+
+  <!-- ITEM MODAL -->
+  <div class="modal fade" id="itemModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <img id="modal-img" src="" class="modal-img-top" alt="">
+        <div class="modal-body">
+          <h3 id="modal-title"></h3>
+          <p id="modal-desc" class="text-muted"></p>
+
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="h4 text-danger">₹<span id="modal-price"></span></div>
+            <button id="modal-add-cart" class="btn btn-success">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART PANEL -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <aside id="cart-panel" class="cart-panel">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="mb-0">Your Cart</h5>
+      <button id="close-cart" class="btn btn-sm btn-outline-secondary">Close</button>
+    </div>
+
+    <div id="cart-items" class="mb-3"></div>
+
+    <div class="mb-3 d-flex justify-content-between">
+      <strong>Total</strong>
+      <strong>₹<span id="cart-total">0</span></strong>
+    </div>
+
+    <button id="checkout-btn" class="btn btn-success w-100 mb-2" data-bs-toggle="modal" data-bs-target="#checkoutModal" disabled>Checkout</button>
+    <small class="text-muted">Orders saved to server for admin view.</small>
+  </aside>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="checkoutForm" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Checkout</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="checkout-alert"></div>
+          <div class="mb-3"><label class="form-label">Name</label><input name="name" required class="form-control"></div>
+          <div class="mb-3"><label class="form-label">Phone</label><input name="phone" required class="form-control"></div>
+          <div class="mb-3"><label class="form-label">Address</label><textarea name="address" class="form-control" rows="3"></textarea></div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Place Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
