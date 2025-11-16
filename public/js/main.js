@@ -28,13 +28,13 @@ const menuData = [
     id: 5,
     name: "Cheese Pizza",
     price: 249,
-    img: "https://images.unsplash.com/photo-1601924582975-7e6706d34a09?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 6,
     name: "Farmhouse Pizza",
     price: 329,
-    img: "https://images.unsplash.com/photo-1628840042765-356b318ebc7e?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 7,
@@ -58,7 +58,7 @@ const menuData = [
     id: 10,
     name: "Garlic Bread",
     price: 149,
-    img: "https://images.unsplash.com/photo-1604908811519-5c3731e59ad5?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1572449258755-56b02a2e93f2?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 11,
@@ -70,7 +70,7 @@ const menuData = [
     id: 12,
     name: "Chocolate Pastry",
     price: 99,
-    img: "https://images.unsplash.com/photo-1505253216365-158e56bc39b1?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1578985545062-69928b1c9587?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
