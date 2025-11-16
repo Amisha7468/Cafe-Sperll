@@ -58,19 +58,19 @@ const menuData = [
     id: 10,
     name: "Garlic Bread",
     price: 149,
-    img: "https://images.unsplash.com/photo-1572449258755-56b02a2e93f2?auto=format&fit=crop&w=800&q=80",
+    img: "https://www.ambitiouskitchen.com/wp-content/uploads/2023/02/Garlic-Bread-4-1064x1064.jpg",
   },
   {
     id: 11,
     name: "Chocolate Brownie",
     price: 129,
-    img: "https://images.unsplash.com/photo-1542834369-f10ebf06d3e0?auto=format&fit=crop&w=800&q=80",
+    img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRD92i2ymecT_Z4Pxx2FsJSlEvo2sJ9Ar9LAEi8fE_v8wauVsghducei5f1MgLCietJ5JHbVw58",
   },
   {
     id: 12,
-    name: "Chocolate Pastry",
+    name: "Chocolate Cookie",
     price: 99,
-    img: "https://images.unsplash.com/photo-1578985545062-69928b1c9587?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
