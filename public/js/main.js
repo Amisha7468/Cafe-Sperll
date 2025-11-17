@@ -395,30 +395,50 @@ function updateCartUI() {
   const cartItems = document.getElementById("cart-items");
   const cartCount = document.getElementById("cart-count");
   const cartTotalEl = document.getElementById("cart-total");
+  const cartSubtotalEl = document.getElementById("cart-subtotal");
+  const cartTaxEl = document.getElementById("cart-tax");
+  const cartDeliveryEl = document.getElementById("cart-delivery");
+  const cartEmptyState = document.getElementById("cart-empty");
   const checkoutBtn = document.getElementById("checkout-btn");
   cartItems.innerHTML = "";
-  let total = 0;
+  let subtotal = 0;
   cart.forEach((it) => {
-    total += it.price * it.qty;
+    subtotal += it.price * it.qty;
     const div = document.createElement("div");
     div.className = "cart-item";
     div.innerHTML = `
-      <img src="${it.img}">
+      <img src="${it.img}" alt="${escapeHtml(it.name)}">
       <div style="flex:1">
-        <div><strong>${escapeHtml(it.name)}</strong></div>
-        <div>₹${it.price} × ${it.qty} = ₹${it.price * it.qty}</div>
+        <div class="d-flex justify-content-between align-items-start">
+          <strong>${escapeHtml(it.name)}</strong>
+          <small class="text-muted">₹${(it.price * it.qty).toFixed(2)}</small>
+        </div>
+        <div class="cart-item-meta">${escapeHtml(
+          categoryLabelMap[it.category] || "Cafe Favorite"
+        )} • ₹${it.price} each</div>
         <div class="qty-controls mt-2">
-          <button class="btn" onclick="changeQty(${it.id}, -1)">-</button>
-          <span class="mx-2">${it.qty}</span>
-          <button class="btn" onclick="changeQty(${it.id}, 1)">+</button>
+          <button class="btn" onclick="changeQty(${it.id}, -1)" aria-label="Decrease quantity">−</button>
+          <span>${it.qty}</span>
+          <button class="btn" onclick="changeQty(${it.id}, 1)" aria-label="Increase quantity">+</button>
         </div>
       </div>
     `;
     cartItems.appendChild(div);
   });
 
+  const tax = subtotal * 0.05;
+  const delivery = subtotal === 0 || subtotal >= 500 ? 0 : 30;
+  const total = subtotal + tax + delivery;
+
+  if (cartEmptyState) {
+    cartEmptyState.style.display = cart.length === 0 ? "block" : "none";
+  }
+
   cartCount.textContent = cart.reduce((s, i) => s + i.qty, 0);
   cartTotalEl.textContent = total.toFixed(2);
+  if (cartSubtotalEl) cartSubtotalEl.textContent = `₹${subtotal.toFixed(2)}`;
+  if (cartTaxEl) cartTaxEl.textContent = `₹${tax.toFixed(2)}`;
+  if (cartDeliveryEl) cartDeliveryEl.textContent = `₹${delivery.toFixed(2)}`;
   checkoutBtn.disabled = cart.length === 0;
 }
 
@@ -770,6 +790,10 @@ function setupCheckout() {
     };
     if (!customer.name || !customer.phone) {
       showCheckoutAlert("Enter name & phone", "danger");
+      return;
+    }
+    if (!/^\d{7,15}$/.test(customer.phone)) {
+      showCheckoutAlert("Phone must be 7-15 digits", "danger");
       return;
     }
     if (cart.length === 0) {
