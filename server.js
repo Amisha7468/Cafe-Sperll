@@ -169,6 +169,8 @@ app.get("/admin/orders", async (_req, res) => {
         .order-grid { display:flex; flex-direction:column; gap:1.5rem; }
         .bulk-bar { position:sticky; bottom:0; background:#fff; border-top:1px solid #eee; padding:1rem 1.5rem; box-shadow:0 -10px 30px rgba(0,0,0,0.08); display:none; }
         .bulk-bar.active { display:flex; justify-content:space-between; align-items:center; }
+        .admin-section { display:none; }
+        .admin-section.active { display:block; }
       </style>
     </head>
     <body>
@@ -181,16 +183,17 @@ app.get("/admin/orders", async (_req, res) => {
                 <small class="text-muted">Control Center</small>
               </div>
               <nav class="d-flex flex-column gap-2" aria-label="Admin navigation">
-                <a class="sidebar-link" href="#"><span>📊</span>Dashboard</a>
-                <a class="sidebar-link active" href="#"><span>🧾</span>Orders</a>
-                <a class="sidebar-link" href="#"><span>🍽️</span>Menu Items</a>
-                <a class="sidebar-link" href="#"><span>👥</span>Customers</a>
-                <a class="sidebar-link" href="#"><span>📈</span>Analytics</a>
-                <a class="sidebar-link" href="#"><span>⚙️</span>Settings</a>
+                <a class="sidebar-link" href="#" data-section="dashboard"><span>📊</span>Dashboard</a>
+                <a class="sidebar-link active" href="#" data-section="orders"><span>🧾</span>Orders</a>
+                <a class="sidebar-link" href="#" data-section="menu"><span>🍽️</span>Menu Items</a>
+                <a class="sidebar-link" href="#" data-section="customers"><span>👥</span>Customers</a>
+                <a class="sidebar-link" href="#" data-section="analytics"><span>📈</span>Analytics</a>
+                <a class="sidebar-link" href="#" data-section="settings"><span>⚙️</span>Settings</a>
               </nav>
             </div>
           </aside>
           <main class="col-12 col-xl-10">
+            <section class="admin-section active" id="section-orders">
             <div class="bg-white rounded-4 shadow-sm p-4 mb-4">
               <div class="d-flex flex-column flex-lg-row gap-3 align-items-lg-center justify-content-between mb-3">
                 <div>
@@ -301,6 +304,69 @@ app.get("/admin/orders", async (_req, res) => {
                 <button class="btn btn-dark" id="refreshBtn">Refresh Page</button>
               </div>
             </div>
+            </section>
+
+            <section class="admin-section" id="section-dashboard">
+              <div class="bg-white rounded-4 shadow-sm p-4">
+                <h3 class="mb-2">Cafe Sperl Dashboard</h3>
+                <p class="text-muted mb-4">High-level KPIs and quick actions will live here. For now, monitor orders using the left navigation.</p>
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <div class="p-3 rounded-4 bg-light h-100">
+                      <p class="text-muted small mb-1">Guests Served This Week</p>
+                      <h3 class="mb-0">~480</h3>
+                      <small class="text-success">+6% vs last week</small>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="p-3 rounded-4 bg-light h-100">
+                      <p class="text-muted small mb-1">Avg. Order Value</p>
+                      <h3 class="mb-0">₹365</h3>
+                      <small class="text-success">+3% vs last week</small>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="p-3 rounded-4 bg-light h-100">
+                      <p class="text-muted small mb-1">Top Channel</p>
+                      <h3 class="mb-0">Dine-in</h3>
+                      <small class="text-muted">55% of revenue</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="admin-section" id="section-menu">
+              <div class="bg-white rounded-4 shadow-sm p-4">
+                <h3 class="mb-2">Menu Items</h3>
+                <p class="text-muted mb-4">Upcoming feature: edit item pricing, availability, and menu photos directly from here.</p>
+                <div class="border rounded-4 p-4 bg-light text-center">
+                  <p class="mb-2"><strong>Quick tip:</strong> Use <code>public/js/main.js</code> to tweak menu entries until this module ships.</p>
+                  <p class="mb-0 text-muted">Reach out if you want this connected to a live CMS.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="admin-section" id="section-customers">
+              <div class="bg-white rounded-4 shadow-sm p-4">
+                <h3 class="mb-2">Customers</h3>
+                <p class="text-muted">Soon you’ll see frequent guests, loyalty info, and saved preferences here.</p>
+              </div>
+            </section>
+
+            <section class="admin-section" id="section-analytics">
+              <div class="bg-white rounded-4 shadow-sm p-4">
+                <h3 class="mb-2">Analytics</h3>
+                <p class="text-muted">Traffic, conversion, and product mix charts will appear in this workspace.</p>
+              </div>
+            </section>
+
+            <section class="admin-section" id="section-settings">
+              <div class="bg-white rounded-4 shadow-sm p-4">
+                <h3 class="mb-2">Settings</h3>
+                <p class="text-muted">Control notifications, sound alerts, and staff roles once this panel is live.</p>
+              </div>
+            </section>
           </main>
         </div>
       </div>

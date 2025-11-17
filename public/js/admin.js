@@ -24,6 +24,7 @@ let selectedOrders = new Set();
 document.addEventListener("DOMContentLoaded", () => {
   fetchOrders();
   setupControls();
+  setupSidebarNavigation();
   refreshTimer = setInterval(fetchOrders, 30000);
 });
 
@@ -66,6 +67,35 @@ function setupControls() {
   if (bulkExport) bulkExport.addEventListener("click", exportSelected);
   if (bulkPrep)
     bulkPrep.addEventListener("click", () => bulkUpdateStatus("preparing"));
+}
+
+function setupSidebarNavigation() {
+  const links = document.querySelectorAll(".sidebar-link[data-section]");
+  const sections = document.querySelectorAll(".admin-section");
+  if (!links.length || !sections.length) return;
+
+  const activate = (target) => {
+    links.forEach((link) => {
+      const isActive = link.dataset.section === target;
+      link.classList.toggle("active", isActive);
+    });
+    sections.forEach((section) => {
+      const match = section.id === `section-${target}`;
+      section.classList.toggle("active", match);
+      section.hidden = !match;
+    });
+  };
+
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const { section } = link.dataset;
+      activate(section);
+      announce(`${link.textContent.trim()} section opened`);
+    });
+  });
+
+  activate("orders");
 }
 
 async function fetchOrders() {
