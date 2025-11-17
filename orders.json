@@ -22,7 +22,14 @@
       }
     ],
     "total": 258,
-    "status": "received"
+    "status": "ready",
+    "updatedAt": "2025-11-17T17:27:37.500Z",
+    "timeline": [
+      {
+        "status": "ready",
+        "timestamp": "2025-11-17T17:27:37.500Z"
+      }
+    ]
   },
   {
     "id": "c162b1a5-7ea9-4759-8ac5-e0e1fe8cba22",
@@ -65,8 +72,8 @@
       }
     ],
     "total": 635,
-    "status": "ready",
-    "updatedAt": "2025-11-17T17:20:38.199Z",
+    "status": "preparing",
+    "updatedAt": "2025-11-17T17:27:46.631Z",
     "timeline": [
       {
         "status": "preparing",
@@ -87,6 +94,22 @@
       {
         "status": "ready",
         "timestamp": "2025-11-17T17:20:38.199Z"
+      },
+      {
+        "status": "received",
+        "timestamp": "2025-11-17T17:27:22.627Z"
+      },
+      {
+        "status": "ready",
+        "timestamp": "2025-11-17T17:27:32.587Z"
+      },
+      {
+        "status": "received",
+        "timestamp": "2025-11-17T17:27:44.054Z"
+      },
+      {
+        "status": "preparing",
+        "timestamp": "2025-11-17T17:27:46.631Z"
       }
     ]
   }

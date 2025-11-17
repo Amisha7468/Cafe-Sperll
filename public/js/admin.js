@@ -107,14 +107,7 @@ async function fetchOrders() {
     const prevIds = new Set(ordersState.map((o) => o.id));
     const newOnes = data.orders.filter((o) => !prevIds.has(o.id));
     ordersState = data.orders
-      .map((order) => ({
-        ...order,
-        items: order.items.map((item) => ({
-          name: item.name,
-          qty: item.qty ?? item.quantity ?? 1,
-          price: item.price,
-        })),
-      }))
+      .map(normalizeOrder)
       .sort(
         (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       );
@@ -389,7 +382,21 @@ async function updateStatus(id, status) {
     });
     const data = await res.json();
     if (!data.ok) throw new Error(data.error || "Failed to update status");
-    announce(`Order updated to ${status}`);
+
+    const updatedOrder = normalizeOrder(data.order);
+    const idx = ordersState.findIndex((o) => o.id === id);
+    if (idx !== -1) ordersState[idx] = updatedOrder;
+    else ordersState.push(updatedOrder);
+    ordersState.sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+
+    statusFilter = status;
+    renderFilters();
+    applyFiltersAndRender();
+    announce(`Order updated to ${STATUS_META[status]?.label || status}`);
+
+    // background refresh to keep everything synced
     fetchOrders();
   } catch (err) {
     console.error(err);
@@ -546,5 +553,16 @@ function formatDate(date) {
 
 function announce(message, isError = false) {
   console[isError ? "error" : "log"](message);
+}
+
+function normalizeOrder(order = {}) {
+  return {
+    ...order,
+    items: (order.items || []).map((item) => ({
+      name: item.name,
+      qty: item.qty ?? item.quantity ?? 1,
+      price: item.price,
+    })),
+  };
 }
 

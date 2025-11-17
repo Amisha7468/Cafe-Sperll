@@ -192,7 +192,7 @@ const menuData = [
     id: 17,
     name: "Brownie Blast Sundae",
     price: 199,
-    img: "https://images.unsplash.com/photo-1497051788611-2c64812349a3?auto=format&fit=crop&w=800&q=80",
+    img: "https://www.cravingsofalunatic.com/wp-content/uploads/2013/08/Brownie-Sundae-Explosion-with-Brownie-Hot-Fudge-Sauce-8-1-500x400.jpg",
     category: "desserts",
     rating: 4.9,
     isVeg: true,
