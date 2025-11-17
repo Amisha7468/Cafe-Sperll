@@ -18,7 +18,7 @@
 
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg px-4 sticky-top shadow-sm">
-    <a class="navbar-brand" href="#" id="brand">Cafe Sperl</a>
+    <a class="navbar-brand" href="/index.html" id="brand">Cafe Sperl</a>
     <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,8 +26,8 @@
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#menu-section">Menu</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="/menu.html">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
         <li class="nav-item ms-3">
           <button id="open-cart" class="btn cart-btn">🛒 Cart <span id="cart-count" class="badge bg-dark ms-1">0</span></button>
         </li>
@@ -36,7 +36,11 @@
   </nav>
 
   <!-- HERO SLIDER (full-width, big) -->
-  <header id="hero" class="mb-4">
+  <header id="hero" class="mb-4" style="position: relative;">
+    <div id="hero-banner" class="shadow-sm" style="position:absolute; top:1rem; right:1rem; background:rgba(20,20,20,0.82); color:#fff; padding:0.75rem 1.5rem; border-radius:999px; display:flex; gap:0.75rem; align-items:center; z-index:5; transition:opacity 0.3s ease;">
+      <span>Today's Special: 20% off all Pizzas 🍕</span>
+      <button id="hero-banner-close" type="button" aria-label="Dismiss banner" style="background:transparent; border:none; color:#fff; font-size:1rem; line-height:1; cursor:pointer;">✕</button>
+    </div>
     <div id="heroCarousel" class="carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -60,24 +64,174 @@
       <div class="hero-content text-center">
         <h1>Welcome to Cafe Sperl</h1>
         <p class="lead">Where every sip brings comfort and every bite brings joy.</p>
-        <a href="#menu-section" class="btn hero-cta">Explore Menu</a>
+        <a href="/menu.html" class="btn hero-cta">Explore Menu</a>
       </div>
     </div>
   </header>
 
-  <!-- MENU SECTION -->
   <main>
-    <section id="menu-section" class="container py-5">
-      <h2 class="text-center menu-title">Our Menu</h2>
-      <div id="menuGrid" class="row g-4">
+    <!-- VALUE PROPOSITION -->
+    <section class="container py-5">
+      <h2 class="text-center menu-title">Crafted for Cravings</h2>
+      <p class="text-center text-muted mb-5">Bursting flavors, lightning-fast service, and a menu that never ends.</p>
+      <div class="row g-4 text-center">
+        <div class="col-6 col-lg-3">
+          <div class="p-4 shadow-sm rounded-4 h-100 bg-white">
+            <div class="display-5 mb-3">🥗</div>
+            <h5>Fresh Ingredients</h5>
+            <p class="text-muted small">Locally sourced produce and daily roasted beans.</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="p-4 shadow-sm rounded-4 h-100 bg-white">
+            <div class="display-5 mb-3">⚡</div>
+            <h5>Fast Delivery</h5>
+            <p class="text-muted small">Hot bites reach you in minutes, not hours.</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="p-4 shadow-sm rounded-4 h-100 bg-white">
+            <div class="display-5 mb-3">📜</div>
+            <h5>100+ Items</h5>
+            <p class="text-muted small">From artisanal coffee to midnight munchies.</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="p-4 shadow-sm rounded-4 h-100 bg-white">
+            <div class="display-5 mb-3">☕</div>
+            <h5>Since 1996</h5>
+            <p class="text-muted small">Cafe culture that’s been brewing for decades.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED ITEMS -->
+    <section class="container pb-5">
+      <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-4">
+        <div>
+          <h2 id="bestSellerTitle" class="menu-title mb-1">Fan Favorites</h2>
+          <p id="bestSellerSubtitle" class="text-muted mb-0">What keeps people coming back</p>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 mb-4">
+        <div class="d-flex flex-wrap gap-2" role="tablist" aria-label="Filter fan favorites">
+          <button type="button" class="btn best-seller-tab" data-category="all">All</button>
+          <button type="button" class="btn best-seller-tab" data-category="beverages">Beverages</button>
+          <button type="button" class="btn best-seller-tab" data-category="food">Food</button>
+          <button type="button" class="btn best-seller-tab" data-category="desserts">Desserts</button>
+        </div>
+        <a id="view-menu-btn" href="/menu.html" class="btn text-nowrap mt-2 mt-lg-0" style="background-color:#8B3A3A;color:#fff;border:none;box-shadow:0 10px 20px rgba(139,58,58,0.2);">View Full Menu →</a>
+      </div>
+      <div id="bestSellerGrid" class="row g-4">
         <!-- populated by main.js -->
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="container pb-5">
-      <h2 class="text-center menu-title">Contact Us</h2>
-      <p class="text-center text-muted">Email: support@cafesperl.com • Phone: +91 98765 43210</p>
+    <!-- SPECIALTIES -->
+    <section id="specialties" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center menu-title mb-5">Our Specialties</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="p-4 rounded-4 shadow-sm h-100 bg-white">
+              <h4>Viennese Coffee Rituals</h4>
+              <p class="text-muted">Signature blends pulled by baristas trained in century-old techniques for velvety crema every time.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 rounded-4 shadow-sm h-100 bg-white">
+              <h4>Wood-Fired Bakes</h4>
+              <p class="text-muted">Our pizzas and breads rise in a crackling wood oven, leaving you with smoky crusts and gooey centers.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 rounded-4 shadow-sm h-100 bg-white">
+              <h4>Chef’s Tasting Plates</h4>
+              <p class="text-muted">Seasonal chef-curated plates turn local produce into artful bites meant for sharing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION & HOURS -->
+    <section id="contact" class="py-5">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <h2 class="menu-title">Location & Hours</h2>
+            <p class="text-muted mb-4">Slide into our cozy space or order online for doorstep joy.</p>
+            <div class="p-4 rounded-4 shadow-sm bg-white mb-4">
+              <h5>Visit Us</h5>
+              <p class="mb-0">12, Crescent Road, Indiranagar, Bengaluru</p>
+              <p class="mb-0">Phone: +91 98765 43210</p>
+              <p class="mb-0">Email: support@cafesperl.com</p>
+            </div>
+            <div class="p-4 rounded-4 shadow-sm bg-white">
+              <h5>Hours</h5>
+              <p class="mb-1">Mon–Thu: 8 AM – 11 PM</p>
+              <p class="mb-1">Fri–Sat: 8 AM – 1 AM</p>
+              <p class="mb-0">Sun: 9 AM – 10 PM</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.026703566574!2d77.63874007602791!3d12.980409314814659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1407d5e59097%3A0xc56fe94187a2c4c!2sIndiranagar%2C%20Bengaluru!5e0!3m2!1sen!2sin!4v1699988880000!5m2!1sen!2sin"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- REVIEWS -->
+    <section id="reviews" class="container py-5">
+      <h2 class="text-center menu-title mb-5">Guest Love</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 shadow-sm h-100">
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=200&q=80" class="rounded-circle me-3" width="56" height="56" alt="reviewer">
+              <div>
+                <h6 class="mb-0">Ananya R.</h6>
+                <small class="text-muted">Food Blogger</small>
+              </div>
+            </div>
+            <p>"The cappuccino tastes like Vienna in a cup. Their brownie with sea salt is my new guilty pleasure."</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 shadow-sm h-100">
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" class="rounded-circle me-3" width="56" height="56" alt="reviewer">
+              <div>
+                <h6 class="mb-0">Rohit K.</h6>
+                <small class="text-muted">Marketing Exec</small>
+              </div>
+            </div>
+            <p>"Lunch meetings are sorted. We order in bulk and everything arrives hot with zero errors."</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 shadow-sm h-100">
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://images.unsplash.com/photo-1546456073-92b9f0a8d1d6?auto=format&fit=crop&w=200&q=80" class="rounded-circle me-3" width="56" height="56" alt="reviewer">
+              <div>
+                <h6 class="mb-0">Meera P.</h6>
+                <small class="text-muted">Architect</small>
+              </div>
+            </div>
+            <p>"Weekend brunches here are a whole vibe. Live latte art and wood-fired pizza—say no more."</p>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
