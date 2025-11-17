@@ -112,5 +112,43 @@
         "timestamp": "2025-11-17T17:27:46.631Z"
       }
     ]
+  },
+  {
+    "id": "c33f6167-bf4d-4223-879c-a4fa40da32e8",
+    "orderNumber": "#1003",
+    "createdAt": "2025-11-17T17:36:57.839Z",
+    "updatedAt": "2025-11-17T17:36:57.839Z",
+    "customer": {
+      "name": "X-MEN",
+      "phone": "6969000091",
+      "address": "The road not taken"
+    },
+    "items": [
+      {
+        "id": 5,
+        "name": "Cheese Burst Pizza",
+        "price": 249,
+        "qty": 1
+      },
+      {
+        "id": 6,
+        "name": "Farmhouse Supreme",
+        "price": 329,
+        "qty": 2
+      }
+    ],
+    "subtotal": 907,
+    "tax": 45.35,
+    "deliveryFee": 0,
+    "total": 907,
+    "status": "received",
+    "paymentMethod": "Cash on Delivery",
+    "specialInstructions": "",
+    "timeline": [
+      {
+        "status": "received",
+        "timestamp": "2025-11-17T17:36:57.839Z"
+      }
+    ]
   }
 ]
